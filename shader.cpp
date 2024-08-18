@@ -128,6 +128,7 @@ int main() {
     glBindVertexArray(0);
 
     // Render loop
+    int timeLocation = glGetUniformLocation(shaderProgram, "uTime");
     while (!glfwWindowShouldClose(window)) {
         // Input
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -141,7 +142,6 @@ int main() {
 
         // Pass the time value to the shader
         float timeValue = glfwGetTime(); // Get the current time
-        int timeLocation = glGetUniformLocation(shaderProgram, "uTime");
         glUniform1f(timeLocation, timeValue);
         // Draw the triangles
         glBindVertexArray(VAO);
